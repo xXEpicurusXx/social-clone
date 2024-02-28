@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
-// import { dark } from "@clerk/themes";
+import { dark } from "@clerk/themes";
 
 import "../globals.css";
 import LeftSidebar from "@/components/shared/LeftSidebar";
@@ -13,8 +13,8 @@ import Topbar from "@/components/shared/Topbar";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Threads",
-  description: "A Next.js 13 Meta Threads application",
+  title: "A.I.O.P.",
+  description: "A Next.js 14 Meta All In One Place social application",
 };
 
 export default function RootLayout({
@@ -24,9 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider
-      // appearance={{
-      //   baseTheme: dark,
-      // }}
+      appearance={{
+        baseTheme: dark,
+      }}
     >
       <html lang='en'>
         <body className={inter.className}>
