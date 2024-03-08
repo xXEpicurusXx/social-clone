@@ -25,6 +25,7 @@ import { UserValidation } from "@/lib/validations/user";
 import { updateUser } from "@/lib/actions/user.actions";
 import { useUploadThing } from "@/lib/validations/uploadthing";
 import { ThreadValidation } from "@/lib/validations/thread";
+import { createThread } from "@/lib/actions/thread.actions";
 
 interface Props {
   user: {
@@ -53,14 +54,14 @@ function PostThread({ userId }: { userId: string }) {
   });
 
   const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
-    // await createThread({
-    //   text: values.thread,
-    //   author: userId,
-    // //   communityId: organization ? organization.id : null,
-    //   path: pathname,
-    // });
+    await createThread({
+      text: values.thread,
+      author: userId,
+      communityId: null,
+      path: pathname,
+    });
 
-    // router.push("/");
+    router.push("/");
   };
 
   return (

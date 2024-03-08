@@ -31,6 +31,7 @@ function Topbar() {
         <OrganizationSwitcher
           appearance={{
             baseTheme: dark,
+            variables: {colorPrimary: 'transparent'},
           
             elements: {
               organizationSwitcherTrigger: "py-2 px-4",

@@ -48,11 +48,13 @@ export async function fetchUser(userId: string) {
   try {
     connectToDB();
 
-    return await User.findOne({ id: userId }
+    return await User.findOne(
+      { id: userId }
       // .populate(
-      //   path: 'communities', 
+      //   path: 'communities',
       //   model: communities))
-  )} catch (error: any) {
-    throw new Error(`Failed to fetch user: ${error.message}`)
+    );
+  } catch (error: any) {
+    throw new Error(`Failed to fetch user: ${error.message}`);
   }
 }
