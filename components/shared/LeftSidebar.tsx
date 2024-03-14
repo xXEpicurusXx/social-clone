@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { OrganizationSwitcher, SignOutButton, SignedIn, UserButton, useAuth } from "@clerk/nextjs";
+import {SignOutButton, SignedIn, useAuth } from "@clerk/nextjs";
 
 import { sidebarLinks } from "@/constants";
 import { dark } from "@clerk/themes";
