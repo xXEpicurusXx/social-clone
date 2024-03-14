@@ -11,7 +11,7 @@ export default async function Home() {
 
   return (
     <div className="h-screen">
-      <h1 className="head-text text-center">This is the home page.</h1>
+      <h1 className="head-text mb-10">Home</h1>
 
       <section className="mt-9 flex flex-col gap-10">
         {result.posts.length === 0 ? (
