@@ -1,8 +1,13 @@
 export const sidebarLinks = [
-    {
+  {
+    imgURL: "/assets/home.svg",
+    route: "/feed",
+    label: "Home",
+  },  
+  {
       imgURL: "/assets/home.svg",
       route: "/",
-      label: "Home",
+      label: "Feed",
     },
     {
       imgURL: "/assets/search.svg",
@@ -12,7 +17,7 @@ export const sidebarLinks = [
     {
       imgURL: "/assets/heart.svg",
       route: "/activity",
-      label: "Activity",
+      label: "Notifications",
     },
     {
       imgURL: "/assets/create.svg",
@@ -22,7 +27,7 @@ export const sidebarLinks = [
     {
       imgURL: "/assets/community.svg",
       route: "/communities",
-      label: "Communities",
+      label: "Recommended",
     },
     {
       imgURL: "/assets/user.svg",
