@@ -23,6 +23,7 @@ module.exports = {
           fontWeight: "700",
         },
       ],
+
       "heading1-semibold": [
         "36px",
         {
