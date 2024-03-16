@@ -8,6 +8,11 @@
     "start": "next start",
     "lint": "next lint"
   },
+
+  "engines": {
+    "node": ">=18"
+  },
+
   "dependencies": {
     "10": "^0.0.1",
     "18": "^0.0.0",
