@@ -4,10 +4,10 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
 
-  experimental: {
-    serverActions: true,
-    serverComponentsExternalPackages: ["mongoose"],
-  },
+  // experimental: {
+  //   serverActions: true,
+  //   serverComponentsExternalPackages: ["mongoose"],
+  // },
   images: {
     remotePatterns: [
       {
