@@ -3,16 +3,11 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  
-  modularizeImports: {
-    lodash: {
-    transform: 'lodash/{{member}}'
-    },
 
-  experimental: {
-    serverActions: true,
-    serverComponentsExternalPackages: ["mongoose"],
-  },
+  // experimental: {
+  //   serverActions: true,
+  //   serverComponentsExternalPackages: ["mongoose"],
+  // },
   images: {
     remotePatterns: [
       {
