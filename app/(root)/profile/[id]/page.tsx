@@ -1,61 +1,72 @@
+import Image from "next/image";
 import { currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-import ThreadCard from "@/components/cards/ThreadCard";
-import Pagination from "@/components/shared/Pagination";
+import { profileTabs } from "@/constants";
 
-import { fetchPosts } from "@/lib/actions/thread.actions";
+import ThreadsTab from "@/components/shared/ThreadsTab";
+import ProfileHeader from "@/components/shared/ProfileHeader";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+
 import { fetchUser } from "@/lib/actions/user.actions";
 
-async function Home({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | undefined };
-}) {
+async function Page({ params }: { params: { id: string } }) {
   const user = await currentUser();
   if (!user) return null;
 
-  const userInfo = await fetchUser(user.id);
+  const userInfo = await fetchUser(params.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
 
-  const result = await fetchPosts(
-    searchParams.page ? +searchParams.page : 1,
-    30
-  );
-
   return (
-    <>
-      <h1 className='head-text text-left'>Home</h1>
-
-      <section className='mt-9 flex flex-col gap-10'>
-        {result.posts.length === 0 ? (
-          <p className='no-result'>No posts found</p>
-        ) : (
-          <>
-            {result.posts.map((post) => (
-              <ThreadCard
-                key={post._id}
-                id={post._id}
-                currentUserId={user.id}
-                parentId={post.parentId}
-                content={post.text}
-                author={post.author}
-                community={post.community}
-                createdAt={post.createdAt}
-                comments={post.children}
-              />
-            ))}
-          </>
-        )}
-      </section>
-
-      <Pagination
-        path='/'
-        pageNumber={searchParams?.page ? +searchParams.page : 1}
-        isNext={result.isNext}
+    <section>
+      <ProfileHeader
+        accountId={userInfo.id}
+        authUserId={user.id}
+        name={userInfo.name}
+        username={userInfo.username}
+        imgUrl={userInfo.image}
+        bio={userInfo.bio}
       />
-    </>
+
+      <div className='mt-9'>
+        <Tabs defaultValue='threads' className='w-full'>
+          <TabsList className='tab'>
+            {profileTabs.map((tab) => (
+              <TabsTrigger key={tab.label} value={tab.value} className='tab'>
+                <Image
+                  src={tab.icon}
+                  alt={tab.label}
+                  width={24}
+                  height={24}
+                  className='object-contain'
+                />
+                <p className='max-sm:hidden'>{tab.label}</p>
+
+                {tab.label === "Threads" && (
+                  <p className='ml-1 rounded-sm bg-light-4 px-2 py-1 !text-tiny-medium text-light-2'>
+                    {userInfo.threads.length}
+                  </p>
+                )}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          {profileTabs.map((tab) => (
+            <TabsContent
+              key={`content-${tab.label}`}
+              value={tab.value}
+              className='w-full text-light-1'
+            >
+              {/* @ts-ignore */}
+              <ThreadsTab
+                currentUserId={user.id}
+                accountId={userInfo.id}
+                accountType='User'
+              />
+            </TabsContent>
+          ))}
+        </Tabs>
+      </div>
+    </section>
   );
 }
-
-export default Home;
+export default Page;
