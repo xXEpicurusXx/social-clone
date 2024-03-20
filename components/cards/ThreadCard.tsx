@@ -109,8 +109,13 @@ function ThreadCard({
                     {comments.length} replies{comments.length > 1 ? "ies" : "y"}
                   </p>
                 </Link>
+                
+                
               )}
             </div>
+              <p className='text-subtle-medium text-gray-1'>
+                {formatDateString(createdAt)}
+              </p>
           </div>
         </div>
 
