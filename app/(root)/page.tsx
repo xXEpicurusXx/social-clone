@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 
 import ThreadCard from "@/components/cards/ThreadCard";
 import Pagination from "@/components/shared/Pagination";
+import NewPostHeader from "@/components/shared/NewPostHeader";
 
 import { fetchPosts } from "@/lib/actions/thread.actions";
 import { fetchUser } from "@/lib/actions/user.actions";
@@ -25,11 +26,18 @@ async function Home({
 
   return (
     <>
-      <h1 className='head-text text-left'>Feed</h1>
+      <NewPostHeader 
+        accountId={userInfo.id}
+        authUserId={user.id}
+        username={userInfo.username}
+        imgUrl={userInfo.image}
+        bio={userInfo.bio}
+        />
 
-      <section className='mt-9 flex flex-col gap-10'>
+
+      <section className="mt-9 flex flex-col gap-10">
         {result.posts.length === 0 ? (
-          <p className='no-result'>No posts found</p>
+          <p className="no-result">No posts found</p>
         ) : (
           <>
             {result.posts.map((post) => (
@@ -50,7 +58,7 @@ async function Home({
       </section>
 
       <Pagination
-        path='/'
+        path="/"
         pageNumber={searchParams?.page ? +searchParams.page : 1}
         isNext={result.isNext}
       />

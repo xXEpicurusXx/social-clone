@@ -19,11 +19,11 @@ export const sidebarLinks = [
       route: "/activity",
       label: "Notifications",
     },
-    {
-      imgURL: "/assets/create.svg",
-      route: "/create-thread",
-      label: "Create Post",
-    },
+    // {
+    //   imgURL: "/assets/create.svg",
+    //   route: "/create-thread",
+    //   label: "Create Post",
+    // },
     {
       imgURL: "/assets/community.svg",
       route: "/communities",
